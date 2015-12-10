@@ -1,0 +1,5 @@
+<% if can? :admin, Spree::Inquiry %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree::Inquiry, url: spree.admin_inquiries_path, icon: 'leaf', label: plural_resource_name(Spree::Inquiry) %>
+  </ul>
+<% end %>
