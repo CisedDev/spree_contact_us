@@ -1,5 +1,5 @@
 module Spree
-  class Inquiry < Spree::Base
+  class Inquiry < ActiveRecord::Base
 
     validates :name, :message, :presence => true
     validates :email,        :format => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
