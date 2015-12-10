@@ -1,7 +1,8 @@
 module Spree
   class InquiriesController < Spree::StoreController
 
-    force_ssl
+    #FIXME
+    # ssl_required
 
     def new
       @inquiry = Inquiry.new
