@@ -1,13 +1,15 @@
 module Spree
   class InquiriesController < Spree::StoreController
-    ssl_required
+
+    #FIXME
+    # ssl_required
 
     def new
       @inquiry = Inquiry.new
     end
 
     def create
-      @inquiry = Inquiry.new params[:inquiry]
+      @inquiry = Inquiry.new(inquiry_params)
       @inquiry.http_user_agent = request.env['HTTP_USER_AGENT']
       @inquiry.http_remote_addr = request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
 
@@ -54,6 +56,11 @@ module Spree
           :message => Spree.t(:recaptcha_error_mes),
           :private_key => Spree::ContactUsConfiguration[:recaptcha_private_key]
         }
+    end
+
+
+    def inquiry_params
+      params.require(:inquiry).permit(:name, :message, :email, :phone_number, :inquiry_type, :order_no, :client_viewport_size)
     end
 
   end
