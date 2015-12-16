@@ -14,14 +14,14 @@ module Spree
       @inquiry.http_remote_addr = request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
 
       if validate_captcha && @inquiry.save
-        redirect_to inquiry_contact_path, :notice => Spree.t(:on_send_message)
+        redirect_to contact_path, :notice => Spree.t(:on_send_message)
       else
         render :new
       end
     end
 
     def index
-      redirect_to(inquiry_contact_path) unless params[:inquiry]
+      redirect_to(contact_path) unless params[:inquiry]
     end
 
     protected

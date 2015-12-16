@@ -6,5 +6,5 @@ Spree::Core::Engine.routes.draw do
     resource :inquiry_settings
   end
 
-  get 'contact', to:'inquiries#new', as: :inquiry_contact
+  get 'contact', to:'inquiries#new', as: :contact
 end
